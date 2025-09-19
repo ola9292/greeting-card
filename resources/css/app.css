@@ -1,0 +1,93 @@
+body{
+    background-color: #0f0d0e;
+    color:#f9f4da;
+}
+.custom-container{
+    max-width: 90%;
+    margin: auto;
+    padding: 0 0 50px 0;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+.grid-item{
+    padding: 20px;
+    background-color: #1b1918;
+    border: 1px solid #fcba28;
+    border-radius: 20px;
+}
+h1{
+    font-size: 3rem;
+}
+.heading-text{
+    font-size: 1.5rem;
+}
+.card-container {
+    position: relative;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* dark overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* content box */
+.card-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    /* slight frosted effect */
+    border-radius: 15px;
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+}
+
+.space{
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+.space-top{
+    margin-top: 3em;
+}
+.space-bottom{
+    margin-bottom: 3em;
+}
+
+.preview-song{
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100%;
+}
+.carousel{
+    background: #44444E;
+    border-radius: 10px;
+}
+
+label{
+    font-size: 22px;
+}
+.preview-button > a{
+    text-decoration: none;
+}
+.preview-button {
+    display: none;
+}
+@media only screen and (max-width: 740px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    .preview-button {
+        display: block;
+    }
+}
