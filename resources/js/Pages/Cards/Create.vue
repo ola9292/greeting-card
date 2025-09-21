@@ -1,6 +1,6 @@
 <script setup>
     import { ref, computed, onMounted  } from 'vue'
-    import { useForm, usePage } from '@inertiajs/vue3'
+    import { useForm, usePage, Link } from '@inertiajs/vue3'
     import AudioPlayer from 'vue3-audio-player'
     import 'vue3-audio-player/dist/style.css'
     import 'vue3-carousel/carousel.css'
@@ -28,13 +28,6 @@ const carouselConfig = {
         if (!form.occasion) return [] // show nothing until selected
         return props.backgrounds.filter(bg => bg.occasion === form.occasion)
         })
-
-    const playSound = (sound) => {
-        if(sound) {
-            var audio = new Audio(sound);
-            audio.play();
-      }
-    }
 const form = useForm({
   occasion: "",
   background_id: null,
@@ -83,6 +76,10 @@ onMounted(() => {
             <div>
                 <h1>Create Your <span class="text-primary">Digi-Card🌹</span></h1>
                 <p class="heading-text text-center">Customize a card for your loved ones 💏</p>
+                <div class="d-flex justify-content-center">
+                    <Link href="/" class="btn btn-lg btn-outline-light me-2">Home</Link>
+                    <Link href="/" class="btn btn-lg btn-outline-light">Buy me <i class="fa-solid fa-mug-hot"></i></Link>
+                </div>
             </div>
         </header>
 
@@ -111,7 +108,7 @@ onMounted(() => {
                         <div v-if="form.errors.recipient_name" class="text-danger">{{ form.errors.recipient_name }}</div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">🍀 Title</label>
+                        <label for="exampleFormControlInput1" class="form-label">🍀 Message Title</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Happy Anniversary" v-model="form.title">
                         <div v-if="form.errors.title" class="text-danger">{{ form.errors.title }}</div>
                     </div>
@@ -132,8 +129,9 @@ onMounted(() => {
                         >
                             <img class="rounded" :src="`${bg.file_path}`" :alt="bg.name" loading="lazy" width="230" height="150"/>
                         </div>
+                        <div v-if="form.errors.background_id" class="text-danger">{{ form.errors.background_id }}</div>
                     </div>
-                    <div v-if="form.errors.background_id" class="text-danger">{{ form.errors.background_id }}</div>
+
 
                      <!-- <AudioPlayer
                         v-for="song in songs"

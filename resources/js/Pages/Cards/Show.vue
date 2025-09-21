@@ -18,6 +18,9 @@ import 'vue3-audio-player/dist/style.css'
             <div>
                 <h1>Here is your <span class="text-primary">Digi-Card🌹</span></h1>
                 <p class="heading-text text-center">Made with love 😍</p>
+                <div class="d-flex justify-content-center">
+                    <Link href="/" class="btn btn-lg btn-outline-light">Home</Link>
+                </div>
             </div>
         </header>
         <div

@@ -29,9 +29,11 @@ class CardController extends Controller
             return Background::select('id', 'name', 'file_path', 'occasion')->get();
         });
 
-        $songs = Cache::remember('songs_all', 3600, function () {
-            return Song::select('id', 'name', 'file_path')->get();
-        });
+        // $songs = Cache::remember('songs_all', 3600, function () {
+        //     return Song::select('id', 'name', 'file_path')->get();
+        // });
+
+        $songs = Song::all();
 
         return Inertia::render('Cards/Create', [
             'backgrounds' => $backgrounds,
@@ -48,7 +50,7 @@ class CardController extends Controller
         $validated = $request->validate([
             'occasion' => ['required', 'string', 'max:50'],
             'background_id' => ['required', 'exists:backgrounds,id'],
-            'title' => ['nullable', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:255'],
             'message' => ['required', 'string'],
             'sender_name' => ['required', 'string', 'max:255'],
             'recipient_name' => ['required', 'string', 'max:255'],
